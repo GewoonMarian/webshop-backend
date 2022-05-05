@@ -1,5 +1,4 @@
 "use strict";
-const { user } = require("pg/lib/defaults");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class categorie extends Model {
@@ -30,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   categorie.init(
     {
       title: DataTypes.STRING,
+      imgUrl: DataTypes.STRING,
     },
     {
       sequelize,
