@@ -15,8 +15,7 @@ router.get("/", async (req, res, next) => {
       offset,
       include: [{ model: Category }],
     });
-    res.status(200).send({ rows: allProduct.rows });
-    //  res.status(200).send({ rows: allProduct.rows, total: allProduct.count });
+    res.status(200).send({ rows: allProduct.rows, total: allProduct.count });
   } catch (error) {
     console.log(error);
     next(error);

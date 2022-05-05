@@ -5,6 +5,7 @@ const Product = require("../models").product;
 router.get("/", async (req, res, next) => {
   try {
     const allCategories = await Category.findAll();
+    console.log(allCategories);
     res.status(200).send(allCategories);
   } catch (error) {
     console.log(error);
