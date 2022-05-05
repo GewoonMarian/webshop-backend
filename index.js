@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const categoriesRouter = require("./routers/categories");
 const productRouter = require("./routers/products");
+const userRouter = require("./routers/users");
 app.use(cors());
 app.use(express.json());
 

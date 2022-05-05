@@ -4,20 +4,25 @@ const Product = require("../models").product;
 const Category = require("../models").categorie;
 
 router.get("/", async (req, res, next) => {
-  //   const limit = req.query.limit || 5;
-  //   const offset = req.query.offset || 0;
+  const limit = req.query.limit || 5;
+  const offset = req.query.offset || 0;
+
+  console.log("limit", limit);
+  console.log("offset", offset);
   try {
-    const allProduct = await Product.findAll({
+    const allProduct = await Product.findAndCountAll({
+      limit,
+      offset,
       include: [{ model: Category }],
     });
-    console.log(allProduct);
-    res.status(200).send(allProduct);
+    res.status(200).send({ rows: allProduct.rows });
+    //  res.status(200).send({ rows: allProduct.rows, total: allProduct.count });
   } catch (error) {
     console.log(error);
     next(error);
   }
 });
-// { product: allProduct.rows, total: allProduct.count }
+//
 
 router.get("/:id", async (req, res, next) => {
   try {
